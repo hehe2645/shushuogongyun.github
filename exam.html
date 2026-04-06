@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>数说宫韵 · 古建筑知识闯关</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Kai,serif;
+  color:#f6e8d7;
+  min-height:100vh;
+  position:relative;
+}
+
+/* 动图背景 + 遮罩层 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("image/default.gif") center center / cover no-repeat;
+  z-index: -2;
+}
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 20, 16, 0.85);
+  z-index: -1;
+}
+
+.container{max-width:700px;margin:0 auto;padding:20px; position:relative; z-index:1}
+.title{text-align:center;font-size:28px;color:#d4af37;margin:30px 0}
+.btn{background:linear-gradient(90deg,#d4af37,#e6d2b8);color:#2d2015;border:none;padding:12px 24px;border-radius:8px;font-size:16px;cursor:pointer;margin:10px;font-weight:bold}
+.btn:disabled{opacity:.5}
+.question-box{background:rgba(0,0,0,.3);border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:20px;margin:20px 0}
+.question{font-size:20px;margin-bottom:15px}
+.option{background:rgba(255,255,255,.05);border:1px solid #d4af37;border-radius:8px;padding:12px;margin:10px 0;cursor:pointer}
+.option:hover{background:rgba(212,175,55,.2)}
+.result{text-align:center;font-size:22px;margin:20px 0;color:#d4af37}
+.rank-box{background:rgba(0,0,0,.3);border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:20px;margin:20px 0}
+.rank-item{display:flex;justify-content:space-between;padding:10px;border-bottom:1px solid rgba(212,175,55,.2)}
+.nav{text-align:center;margin:20px 0}
+.answer-area{margin-top:15px;padding:10px;background:rgba(212,175,55,.1);border-radius:8px;color:#fff}
+
+.back-home-btn {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background: rgba(212,175,55,0.2);
+  color: #d4af37;
+  border: 1px solid rgba(212,175,55,0.3);
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.6;
+  z-index: 100;
+}
+.back-home-btn:hover {
+  opacity: 1;
+}
+
+.timer {
+  text-align:center;
+  font-size:20px;
+  color:#d4af37;
+  margin:10px 0;
+  font-weight:bold;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  display: none;
+  backdrop-filter: blur(3px);
+}
+.modal-box {
+  background: #2a1f16;
+  border: 2px solid #d4af37;
+  border-radius: 18px;
+  max-width: 400px;
+  width: 88%;
+  padding: 36px 24px;
+  text-align: center;
+  position: relative;
+  color: #f6e8d7;
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35), 0 4px 12px rgba(0,0,0,0.25);
+  transform: scale(0.9);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.modal-overlay.show .modal-box {
+  transform: scale(1);
+  opacity: 1;
+}
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #d4af37;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: #fff;
+}
+.modal-icon {
+  font-size: 44px;
+  color: #d4af37;
+  margin-bottom: 18px;
+}
+.modal-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+.modal-text {
+  font-size: 19px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  font-family: "Kai", serif;
+}
+.modal-score {
+  font-size: 24px;
+  color: #d4af37;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* 勋章弹窗动画 + 圆形完美适配样式 */
+#medalModal .modal-box {
+  border-color: #ffd700;
+  animation: medalGlow 1.2s ease-out forwards;
+}
+@keyframes medalGlow {
+  0% { transform: scale(0.3) rotate(-10deg); opacity:0; box-shadow:0 0 0 #ffd700; }
+  60% { transform: scale(1.1) rotate(3deg); opacity:1; box-shadow:0 0 30px #ffd700; }
+  100% { transform: scale(1); opacity:1; box-shadow:0 0 20px #ffd700; }
+}
+#medalModal .modal-icon {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto 20px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#medalModal .modal-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+/* 再来一次按钮 */
+#restartBtn {
+  display: none;
+  margin: 30px auto;
+  padding: 14px 30px;
+  font-size: 18px;
+  background: linear-gradient(90deg, #ffd700, #d4af37);
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<button class="back-home-btn" onclick="goBack()">← 返回主页</button>
+
+<div class="container">
+  <h1 class="title">数说宫韵 · 古建筑知识闯关</h1>
+
+  <div class="nav" id="nav">
+    <button class="btn" onclick="startExam()">开始答题（60秒）</button>
+    <button class="btn" onclick="showRank()">查看排行榜</button>
+  </div>
+
+  <!-- 再来一次按钮 -->
+  <button class="btn" id="restartBtn" onclick="restartExam()">再来一次</button>
+
+  <div class="timer" id="timer" style="display:none">剩余时间：60秒</div>
+
+  <div id="examArea" style="display:none">
+    <div class="question-box">
+      <div class="question" id="question"></div>
+      <div id="options"></div>
+      <div id="answerDisplay" class="answer-area" style="display:none"></div>
+    </div>
+    <div style="text-align:center">
+      <button class="btn" id="showAnswerBtn" onclick="showAnswer()">查看答案</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()" disabled>下一题</button>
+    </div>
+  </div>
+
+  <div id="resultArea" style="display:none" class="result"></div>
+
+  <div id="rankArea" style="display:none">
+    <h2 style="text-align:center;color:#d4af37">排行榜</h2>
+    <div class="rank-box" id="rankList"></div>
+    <div style="text-align:center;margin-top:20px">
+      <button class="btn" onclick="resetRank()">清空记录</button>
+    </div>
+  </div>
+</div>
+
+<!-- 第一个：成绩弹窗 -->
+<div class="modal-overlay" id="resultModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-icon" id="modalIcon"></div>
+    <div class="modal-text" id="modalText"></div>
+    <div class="modal-score" id="modalScore"></div>
+  </div>
+</div>
+
+<!-- 第二个：鲁班勋章弹窗（圆形完美适配版） -->
+<div class="modal-overlay" id="medalModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeMedalModal()">×</button>
+    <div class="modal-icon" id="medalLogo">
+      <img src="modallogo.png">
+    </div>
+    <div class="modal-text">恭喜你获得一枚“鲁班勋章”</div>
+  </div>
+</div>
+
+<script>
+const questionBank = [
+  { q:"鲁班被后世尊称为什么？", options:["药神","木匠祖师","诗仙","画圣"], ans:2 },
+  { q:"李春主持修建了哪座著名古桥？", options:["卢沟桥","赵州桥","洛阳桥","广济桥"], ans:2 },
+  { q:"《营造法式》由谁编著？", options:["李春","宇文恺","李诫","喻皓"], ans:3 },
+  { q:"宇文恺是哪个朝代的城市规划大师？", options:["唐","隋","宋","明"], ans:2 },
+  { q:"中国古建核心连接结构是？", options:["焊接","铆钉","榫卯","胶水"], ans:3 },
+  { q:"斗拱主要作用不包括？", options:["承重","减震","装饰","防水"], ans:4 },
+  { q:"太和殿属于哪种屋顶？", options:["歇山顶","庑殿顶","攒尖顶","硬山顶"], ans:2 },
+  { q:"《园冶》的作者是？", options:["计成","李诫","李春","宇文恺"], ans:1 },
+  { q:"墨斗是用于什么的工具？", options:["钻孔","弹线","刨平","雕刻"], ans:2 },
+  { q:"《考工记》是哪一时期的典籍？", options:["先秦","唐代","宋代","明代"], ans:1 },
+  { q:"四合院最突出的特点是？", options:["中轴对称","多层楼阁","临水而建","圆形布局"], ans:1 },
+  { q:"马头墙是哪种民居特色？", options:["晋派","徽派","闽派","京派"], ans:2 },
+  { q:"榫卯结构最大优势是？", options:["便宜","抗震","快速","省料"], ans:2 },
+  { q:"喻皓所著的木结构典籍？", options:["木经","营造法式","园冶","考工记"], ans:1 },
+  { q:"故宫等级最高的殿？", options:["中和殿","保和殿","太和殿","乾清宫"], ans:3 },
+  { q:"飞檐主要作用不包括？", options:["排水","采光","美观","承重"], ans:4 },
+  { q:"硬山顶多用于？", options:["宫殿","民居","寺庙","塔"], ans:2 },
+  { q:"瓦当保护建筑哪个部分？", options:["屋檐","地基","梁柱","门窗"], ans:1 },
+  { q:"清代官式建筑典籍？", options:["营造法式","工程做法则例","园冶","木经"], ans:2 },
+  { q:"古建筑最高彩画等级？", options:["和玺","旋子","苏式","民间"], ans:1 }
+];
+
+let currentQuestions = [];
+let current = 0;
+let score = 0;
+let selected = null;
+let timeLeft = 60;
+let timerInterval = null;
+
+function getRandomQuestions() {
+  let arr = [...questionBank];
+  let res = [];
+  for(let i=0;i<5;i++){
+    let idx = Math.floor(Math.random()*arr.length);
+    res.push(arr[idx]);
+    arr.splice(idx,1);
+  }
+  return res;
+}
+
+function startExam(){
+  document.getElementById("restartBtn").style.display = "none";
+  document.getElementById("nav").style.display = "none";
+  currentQuestions = getRandomQuestions();
+  current = 0;
+  score = 0;
+  selected = null;
+  timeLeft = 60;
+
+  document.getElementById('resultArea').style.display = 'none';
+  document.getElementById('rankArea').style.display = 'none';
+  document.getElementById('examArea').style.display = 'block';
+  document.getElementById('timer').style.display = 'block';
+  document.getElementById('answerDisplay').style.display = 'none';
+
+  startTimer();
+  loadQuestion();
+}
+
+function restartExam(){
+  startExam();
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  timerInterval = setInterval(()=>{
+    timeLeft--;
+    document.getElementById('timer').innerText = `剩余时间：${timeLeft}秒`;
+    if(timeLeft <= 0){
+      clearInterval(timerInterval);
+      showResult();
+    }
+  },1000);
+}
+
+function loadQuestion(){
+  if(current >= currentQuestions.length){
+    clearInterval(timerInterval);
+    showResult();
+    return;
+  }
+  let q = currentQuestions[current];
+  document.getElementById('question').innerText = `第${current+1}题：${q.q}`;
+  let opt = document.getElementById('options');
+  opt.innerHTML = '';
+  document.getElementById('answerDisplay').style.display = 'none';
+  q.options.forEach((o,i)=>{
+    let div = document.createElement('div');
+    div.className = 'option';
+    div.innerText = o;
+    div.onclick = ()=>{
+      selected = i+1;
+      document.querySelectorAll('.option').forEach(e=>e.style.background='');
+      div.style.background = 'rgba(212,175,55,.3)';
+      document.getElementById('nextBtn').disabled = false;
+    };
+    opt.appendChild(div);
+  });
+  document.getElementById('nextBtn').disabled = true;
+}
+
+function showAnswer(){
+  let q = currentQuestions[current];
+  let ansText = q.options[q.ans-1];
+  document.getElementById('answerDisplay').innerText = `正确答案：${ansText}`;
+  document.getElementById('answerDisplay').style.display = 'block';
+}
+
+function nextQuestion(){
+  if(selected === currentQuestions[current].ans) score++;
+  selected = null;
+  current++;
+  loadQuestion();
+}
+
+function showResult(){
+  clearInterval(timerInterval);
+  document.getElementById('examArea').style.display = 'none';
+  document.getElementById('timer').style.display = 'none';
+  showResultModal(score);
+  saveScore(score);
+  setTimeout(showRank, 2000);
+  setTimeout(()=>{
+    document.getElementById("restartBtn").style.display = "block";
+  }, 1000);
+}
+
+// ====================== 三档图标自动切换 ======================
+function showResultModal(score){
+  let modal = document.getElementById('resultModal');
+  let iconBox = document.getElementById('modalIcon');
+  let text = document.getElementById('modalText');
+  let scoreText = document.getElementById('modalScore');
+
+  let iconSrc = "";
+
+  if (score === 5) {
+    iconSrc = "icons/张嘴闭眼笑_grinning-face-with-tightly-closed-eyes-open-mouth.svg";
+    text.innerText = "匠心独具，答如圭壁，满分无愧。";
+  } else if (score >= 3) {
+    iconSrc = "icons/开心_grinning-face.svg";
+    text.innerText = "意理略通，尚有可琢之处，再接再厉。";
+  } else {
+    iconSrc = "icons/开心_emotion-happy.svg";
+    text.innerText = "所知尚浅，宜多览典籍，夯实根基。";
+  }
+
+  iconBox.innerHTML = `<img src="${iconSrc}">`;
+  scoreText.innerText = `最终得分：${score}/5`;
+
+  modal.classList.add('show');
+  modal.style.display = "flex";
+}
+// ============================================================
+
+// 关闭成绩弹窗 → 满分自动弹出勋章弹窗
+function closeModal(){
+  let modal = document.getElementById('resultModal');
+  modal.classList.remove('show');
+  setTimeout(() => {
+    modal.style.display = "none";
+    if(score === 5){
+      showMedalModal();
+    }
+  }, 300);
+}
+
+// 显示鲁班勋章弹窗
+function showMedalModal(){
+  let medalModal = document.getElementById('medalModal');
+  medalModal.style.display = "flex";
+  setTimeout(() => {
+    medalModal.classList.add('show');
+  },10);
+}
+
+// 关闭勋章弹窗
+function closeMedalModal(){
+  let medalModal = document.getElementById('medalModal');
+  medalModal.classList.remove('show');
+  setTimeout(() => {
+    medalModal.style.display = "none";
+  },300);
+}
+
+function goBack(){
+  window.location.href = "index(86).html";
+}
+
+function saveScore(s){
+  let list = JSON.parse(localStorage.getItem('examScores') || '[]');
+  list.push({score:s,time:new Date().toLocaleString()});
+  list.sort((a,b)=>b.score-a.score);
+  if(list.length>20) list = list.slice(0,20);
+  localStorage.setItem('examScores',JSON.stringify(list));
+}
+
+function showRank(){
+  document.getElementById('examArea').style.display = 'none';
+  document.getElementById('resultArea').style.display = 'none';
+  document.getElementById('rankArea').style.display = 'block';
+  let list = JSON.parse(localStorage.getItem('examScores') || '[]');
+  let box = document.getElementById('rankList');
+  if(list.length===0){ box.innerHTML = '<div style="text-align:center">暂无成绩</div>'; return; }
+  let html = '';
+  list.forEach((item,i)=>{
+    html+=`<div class="rank-item"><span>第${i+1}名</span><span>${item.score}分</span><span>${item.time}</span></div>`;
+  });
+  box.innerHTML = html;
+}
+
+function resetRank(){
+  if(confirm('确定清空所有成绩？')){
+    localStorage.removeItem('examScores');
+    showRank();
+  }
+}
+
+window.onload = function(){
+  if(location.hash === '#rank') showRank();
+}
+</script>
+</body>
+</html>

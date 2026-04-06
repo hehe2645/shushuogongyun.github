@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据可视化大屏 | 数说宫韵</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #1a140e;
+    }
+    /* 数据大屏铺满全屏 */
+    .screen-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    /* 返回按钮 */
+    .back-btn {
+      position: fixed;
+      top: 16px;
+      left: 20px;
+      z-index: 999;
+      background: rgba(0,0,0,0.25);
+      color: rgba(255,255,255,0.4);
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .back-btn:hover {
+      background: rgba(0,0,0,0.4);
+      color: rgba(255,255,255,0.7);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 返回按钮 → 返回古今共筑新闻列表 -->
+  <button class="back-btn" onclick="goBack()">← 返回</button>
+
+  <!-- 数据大屏 iframe -->
+  <iframe 
+    src="http://192.168.1.162:10000/ywhys4mkew8w/" 
+    class="screen-iframe"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
+
+  <script>
+    // 返回：古今共筑新闻列表页
+    function goBack() {
+      // 关闭当前大屏标签页
+      window.close();
+      
+      // 如果浏览器不允许关闭，就跳转回去
+      setTimeout(() => {
+        window.location.href = "index(86).html#today";
+      }, 100);
+    }
+  </script>
+</body>
+</html>
