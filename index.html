@@ -12,7 +12,7 @@
     /* 标题专用字体 */
     @font-face {
       font-family: 'custom-title';
-      src: url('./fonts/title-font.ttf') format('truetype');
+      src: url('title-font.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
       font-display: swap;
@@ -20,7 +20,7 @@
     /* 宋体/正文书法字体 */
     @font-face {
       font-family: 'custom-song';
-      src: url('./fonts/song-font.ttf') format('truetype');
+      src: url('song-font.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
       font-display: swap;
@@ -28,7 +28,7 @@
     /* 英文标题字体 */
     @font-face {
       font-family: 'custom-english';
-      src: url('./fonts/english-font.ttf') format('truetype');
+      src: url('english-font.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
       font-display: swap;
@@ -39,25 +39,25 @@
 /* 营政先贤 - 4个人名独立自定义本地字体 */
 @font-face {
   font-family: 'luban-font';
-  src: url('./fonts/峄山碑篆体.ttf') format('truetype');
+  src: url('峄山碑篆体.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'yuwen-font';
-  src: url('./fonts/nzgrRuYinZouZhangKai.ttf') format('truetype');
+  src: url('nzgrRuYinZouZhangKai.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'lichun-font';
-  src: url('./fonts/汇文正楷v1.001.ttf') format('truetype');
+  src: url('汇文正楷v1.001.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'lijie-font';
-  src: url('./fonts/ChillHuoFangSong_Regular.ttf') format('truetype');
+  src: url('ChillHuoFangSong_Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -351,7 +351,7 @@
 
 /* ========== 四季古典主题系统 ========== */
 :root {
-  --main-bg: url('image/default.gif'); /* 默认无背景 */
+  --main-bg: url('default.gif'); /* 默认无背景 */
   --nav-bg: #1a1510;
   --card-bg: #2d2015;
   --card-dark: #1f1711;
@@ -361,7 +361,7 @@
 
 /* 1. 默认主题（保持原样） */
 .theme-default {
-  --main-bg: url('image/default.gif');
+  --main-bg: url('default.gif');
   --nav-bg: #1a1510;
   --card-bg: #422e1d;
   --card-dark: #382b23;
@@ -371,7 +371,7 @@
 
 /* 2. 春季主题（淡粉古典·低饱和） */
 .theme-spring {
-  --main-bg: url('image/spring.gif'); /* 本地GIF路径 */
+  --main-bg: url('spring.gif'); /* 本地GIF路径 */
   --nav-bg: #f8f3f3;
   --card-bg: #fcf6f6;
   --card-dark: #f9eaea;
@@ -391,7 +391,7 @@
 
 /* 3. 夏季主题（淡绿古典·低饱和） */
 .theme-summer {
-  --main-bg: url('image/summer.gif');
+  --main-bg: url('summer.gif');
   --nav-bg: #f3f8f3;
   --card-bg: #f6fcf6;
   --card-dark: #eaf9ea;
@@ -411,7 +411,7 @@
 
 /* 4. 秋季主题（淡橙古典·低饱和） */
 .theme-autumn {
-  --main-bg: url('image/autumn.gif');
+  --main-bg: url('autumn.gif');
   --nav-bg: #f8f5f0;
   --card-bg: #fcf9f3;
   --card-dark: #f9f0e3;
@@ -431,7 +431,7 @@
 
 /* 5. 冬季主题（淡蓝古典·低饱和） */
 .theme-winter {
-  --main-bg: url('image/winter.gif');
+  --main-bg: url('winter.gif');
   --nav-bg: #f0f5f8;
   --card-bg: #f3f9fc;
   --card-dark: #e3f0f9;
@@ -540,7 +540,7 @@ body::before {
   @font-face {
     font-family: 'custom-title';
     /* 本地字体 */
-    src: url('./fonts/汇文正楷v1.001.ttf') format('truetype');
+    src: url('汇文正楷v1.001.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -555,19 +555,19 @@ body::before {
 /* 1. 引入本地的自定义字体 */
 @font-face {
   font-family: "我的导航字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "我的标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "我的英文字体";
-  src: url("./fonts/英文字体.ttf") format("truetype");
+  src: url("英文字体.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -609,7 +609,7 @@ body::before {
   <div class="max-w-7xl mx-auto pl-2 pr-4 py-3 flex items-center justify-between">
     <div class="flex items-center gap-3 h-12">
       <img 
-        src="image/logo.png" 
+        src="logo.png" 
         alt="数说宫韵" 
         class="h-full w-auto object-contain transition-all duration-300 hover:scale-105"
       >
@@ -663,30 +663,30 @@ body::before {
 <!-- 主题下拉面板 -->
 <div id="themePanel" class="hidden absolute top-12 right-0 bg-darkCard/95 shadow-xl rounded-md w-44 py-3 z-50 backdrop-blur-sm">
   <button onclick="setTheme('default')" class="w-full text-left px-4 py-2 hover:bg-ancient hover:text-darkBg transition-all flex items-center gap-2">
-    <img src="icons/调色盘_platte.svg" class="w-4 h-4 object-contain flex-shrink-0">
+    <img src="调色盘_platte.svg" class="w-4 h-4 object-contain flex-shrink-0">
     金壁丹楹
   </button>
   <button onclick="setTheme('spring')" class="w-full text-left px-4 py-2 hover:bg-pink-100 hover:text-pink-800 transition-all flex items-center gap-2">
-    <img src="icons/调色盘_platte (1).svg" class="w-4 h-4 object-contain flex-shrink-0">
+    <img src="调色盘_platte (1).svg" class="w-4 h-4 object-contain flex-shrink-0">
     春临画阁
   </button>
   <button onclick="setTheme('summer')" class="w-full text-left px-4 py-2 hover:bg-green-100 hover:text-green-800 transition-all flex items-center gap-2">
-    <img src="icons/调色盘_platte (2).svg" class="w-4 h-4 object-contain flex-shrink-0">
+    <img src="调色盘_platte (2).svg" class="w-4 h-4 object-contain flex-shrink-0">
     夏满琼轩
   </button>
   <button onclick="setTheme('autumn')" class="w-full text-left px-4 py-2 hover:bg-orange-100 hover:text-orange-800 transition-all flex items-center gap-2">
-    <img src="icons/调色盘_platte (3).svg" class="w-4 h-4 object-contain flex-shrink-0">
+    <img src="调色盘_platte (3).svg" class="w-4 h-4 object-contain flex-shrink-0">
     秋凝朱榭
   </button>
   <button onclick="setTheme('winter')" class="w-full text-left px-4 py-2 hover:bg-blue-100 hover:text-blue-800 transition-all flex items-center gap-2">
-    <img src="icons/调色盘_platte (4).svg" class="w-4 h-4 object-contain flex-shrink-0">
+    <img src="调色盘_platte (4).svg" class="w-4 h-4 object-contain flex-shrink-0">
     冬映雕阑
   </button>
 </div>
 </div>
 
 <button onclick="openSidebar()" class="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-ancient text-darkBg hover:scale-110 transition-all">
-  <img src="icons/汉堡图标_hamburger-button.svg" class="w-6 h-6 object-contain">
+  <img src="汉堡图标_hamburger-button.svg" class="w-6 h-6 object-contain">
 </button>
   </div>
 
@@ -704,7 +704,7 @@ body::before {
   <!--右侧弹窗导航栏logo-->
   <div class="flex items-center gap-3 h-12">
     <img 
-      src="image/logo.png" 
+      src="logo.png" 
       alt="数说宫韵" 
       class="h-full w-auto object-contain transition-all duration-300 hover:scale-105"
     >
@@ -762,11 +762,11 @@ body::before {
 <div class="fixed top-24 right-4 z-40 flex flex-col gap-3 bg-darkCard/80 p-3 rounded-lg shadow-md">
   <a href="#navbar" class="w-8 h-8 flex items-center justify-center rounded-full bg-ancient text-darkBg hover:scale-110 transition-all">
     <!-- 回到顶部图标：本地图片格式 -->
-    <img src="icons/首页_home-two.svg" class="w-5 h-5 object-contain">
+    <img src="首页_home-two.svg" class="w-5 h-5 object-contain">
   </a>
   <a href="#footer" class="w-8 h-8 flex items-center justify-center rounded-full bg-ancient text-darkBg hover:scale-110 transition-all">
     <!-- 回到底部图标：本地图片格式 -->
-    <img src="icons/去底部1_to-bottom-one.svg" class="w-5 h-5 object-contain">
+    <img src="去底部1_to-bottom-one.svg" class="w-5 h-5 object-contain">
   </a>
 </div>
 
@@ -821,21 +821,21 @@ body::before {
 /* 引入本地字体 */
 @font-face {
   font-family: 'SubTitleFont';
-  src: url('fonts/WenJinMinchoCP0-Regular.ttf') format('truetype');
+  src: url('WenJinMinchoCP0-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'DescFont';
-  src: url('fonts/WenJinMinchoCP2-Regular.ttf') format('truetype');
+  src: url('WenJinMinchoCP2-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'EnglishFont';
-  src: url('fonts/WenJinMinchoCP2-Regular.ttf') format('truetype');
+  src: url('WenJinMinchoCP2-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -856,13 +856,13 @@ body::before {
       <div class="flex items-center gap-6 mb-6 -mt-2">
         <div class="flex -space-x-5">
           <div class="w-16 h-16 rounded-full bg-ancient/20 border-2 border-darkBg flex items-center justify-center overflow-hidden shadow-lg">
-            <img src="image/2.jpg" class="w-full h-full object-cover" alt="古建筑插画">
+            <img src="2.jpg" class="w-full h-full object-cover" alt="古建筑插画">
           </div>
           <div class="w-16 h-16 rounded-full bg-accent/20 border-2 border-darkBg flex items-center justify-center overflow-hidden shadow-lg">
-            <img src="image/3.jpg" class="w-full h-full object-cover" alt="古建筑插画">
+            <img src="3.jpg" class="w-full h-full object-cover" alt="古建筑插画">
           </div>
           <div class="w-16 h-16 rounded-full bg-ancientLight/20 border-2 border-darkBg flex items-center justify-center overflow-hidden shadow-lg">
-            <img src="image/4.jpg" class="w-full h-full object-cover" alt="古建筑插画">
+            <img src="4.jpg" class="w-full h-full object-cover" alt="古建筑插画">
           </div>
         </div>
         <p class="text-3xl font-subtitle font-bold text-ancient">古代建筑文明科普平台</p>
@@ -872,7 +872,7 @@ body::before {
     </div>
 
     <div class="relative w-full h-[520px] bg-darkCard/50 rounded-xl overflow-hidden card-shadow">
-      <img src="image/1.jpg" 
+      <img src="1.jpg" 
            class="w-full h-full object-cover absolute top-0 left-0 opacity-80"
            style="top: -15px; object-position: center;">
       
@@ -954,19 +954,19 @@ body::before {
 /* 引入本地字体 */ 
 @font-face {
   font-family: "营政先贤大标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "营政先贤小标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "营政先贤背景字体";
-  src: url("./fonts/余思源颜黄体.ttf") format("truetype");
+  src: url("余思源颜黄体.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -1017,7 +1017,7 @@ body::before {
             <!-- 小图：带 hover 变亮效果 -->
             <div class="w-full aspect-[4/10.2] bg-darkBg/30 rounded-lg overflow-hidden relative">
               <img 
-                src="image/daibiaoshiqi(2).jpg" 
+                src="daibiaoshiqi(2).jpg" 
                 alt="秦汉高台建筑" 
                 class="w-full h-full object-cover transition-all duration-300 hover:brightness-125 hover:scale-105"
               >
@@ -1027,7 +1027,7 @@ body::before {
           <div class="w-[60%]">
             <div class="w-full aspect-[4/8.2] bg-darkBg/30 rounded-lg overflow-hidden relative h-full">
               <img 
-                src="image/daibiaoshiqi(1).jpg" 
+                src="daibiaoshiqi(1).jpg" 
                 alt="古代建筑全景" 
                 class="w-full h-full object-cover transition-all duration-300 hover:brightness-125 hover:scale-105"
               >
@@ -1047,7 +1047,7 @@ body::before {
         <div class="flex items-start gap-4 transition-all duration-300 hover:bg-darkCard/50 hover:pl-2 rounded-lg p-1">
           <div class="mt-1 w-6 h-6 rounded-full bg-ancient flex items-center justify-center text-darkBg font-bold overflow-hidden">
             <!-- 秦汉本地图标 -->
-            <img src="icons/长城_great-wall.svg" alt="秦汉图标" class="w-4 h-4 object-contain">
+            <img src="长城_great-wall.svg" alt="秦汉图标" class="w-4 h-4 object-contain">
           </div>
           <div class="flex-1">
             <div class="flex items-center gap-2 mb-2 transition-all duration-300 hover:text-white hover:brightness-125">
@@ -1064,7 +1064,7 @@ body::before {
         <div class="flex items-start gap-4 transition-all duration-300 hover:bg-darkCard/50 hover:pl-2 rounded-lg p-1">
           <div class="mt-1 w-6 h-6 rounded-full bg-ancient flex items-center justify-center text-darkBg font-bold overflow-hidden">
             <!-- 隋唐本地图标 -->
-            <img src="icons/中国楼阁_chinese-pavilion.svg" alt="隋唐图标" class="w-4 h-4 object-contain">
+            <img src="中国楼阁_chinese-pavilion.svg" alt="隋唐图标" class="w-4 h-4 object-contain">
           </div>
           <div class="flex-1">
             <div class="flex items-center gap-2 mb-2 transition-all duration-300 hover:text-white hover:brightness-125">
@@ -1081,7 +1081,7 @@ body::before {
         <div class="flex items-start gap-4 transition-all duration-300 hover:bg-darkCard/50 hover:pl-2 rounded-lg p-1">
           <div class="mt-1 w-6 h-6 rounded-full bg-ancient flex items-center justify-center text-darkBg font-bold overflow-hidden">
             <!-- 两宋本地图标 -->
-            <img src="icons/城门_city-gate.svg" alt="两宋图标" class="w-4 h-4 object-contain">
+            <img src="城门_city-gate.svg" alt="两宋图标" class="w-4 h-4 object-contain">
           </div>
           <div class="flex-1">
             <div class="flex items-center gap-2 mb-2 transition-all duration-300 hover:text-white hover:brightness-125">
@@ -1197,7 +1197,7 @@ body::before {
       <!-- 秦汉时期 -->
       <div class="p-8 hover-scale hover-border rounded-md bg-darkBg card-shadow animate-slide-left animate-delay-1 flex flex-col">
         <!-- 秦汉本地图标 -->
-        <img src="icons/书籍1_book-one.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
+        <img src="书籍1_book-one.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
         <h3 class="text-xl font-kai font-bold mb-4 text-ancientLight">将作系统初建</h3>
         <p class="text-sm text-ancientLight leading-relaxed opacity-80 flex-1">
           秦汉是皇家工程专管机构的雏形期，秦代始设将作少府，隶属九卿，专职掌管宫室、宗庙、陵寝等皇家土木营建，
@@ -1211,7 +1211,7 @@ body::before {
       <!-- 隋唐时期 -->
       <div class="p-8 hover-scale hover-border rounded-md bg-darkBg card-shadow animate-slide-left animate-delay-2 flex flex-col">
         <!-- 隋唐本地图标 -->
-        <img src="icons/书籍1_book-one.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
+        <img src="书籍1_book-one.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
         <h3 class="text-xl font-kai font-bold mb-4 text-ancientLight">工部+将作监双轨成熟</h3>
         <p class="text-sm text-ancientLight leading-relaxed opacity-80 flex-1">
           隋唐时期建筑工程管理形成政令与执行分离的双轨成熟体系，隋代首创六部制设工部，唐代进一步完善，
@@ -1227,7 +1227,7 @@ body::before {
       <!-- 北宋时期 -->
       <div class="p-8 hover-scale hover-border rounded-md bg-darkBg card-shadow animate-slide-left animate-delay-3 flex flex-col">
         <!-- 北宋本地图标 -->
-        <img src="icons/书籍1_book-one.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
+        <img src="书籍1_book-one.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
         <h3 class="text-xl font-kai font-bold mb-4 text-ancientLight">将作监+《营造法式》标准化</h3>
         <p class="text-sm text-ancientLight leading-relaxed opacity-80 flex-1">
           北宋迎来建筑工程技术法典化革新阶段，北宋前期将作监职能虚化，
@@ -1241,7 +1241,7 @@ body::before {
       <!-- 明清时期 -->
       <div class="p-8 hover-scale hover-border rounded-md bg-darkBg card-shadow animate-slide-left animate-delay-4 flex flex-col">
         <!-- 明清本地图标 -->
-        <img src="icons/书籍1_book-one.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
+        <img src="书籍1_book-one.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
         <h3 class="text-xl font-kai font-bold mb-4 text-ancientLight">工部+内务府双体系</h3>
         <p class="text-sm text-ancientLight leading-relaxed opacity-80 flex-1">
           明清时期形成内外分治的建筑工程管理顶峰体系，
@@ -1281,7 +1281,7 @@ body::before {
                controls="false"
                disableRemotePlayback
                data-immersive-video="false">
-          <source src="image/luban.mp4" type="video/mp4">
+          <source src="luban.mp4" type="video/mp4">
         </video>
         <div class="absolute bottom-0 left-0 w-full bg-darkCard p-5 text-center transition-all duration-300 hover:bg-ancient hover:brightness-110 hover:scale-105 origin-bottom">
           <h3 class="text-2xl font-luban font-bold text-ancient hover:text-white">鲁班</h3>
@@ -1304,7 +1304,7 @@ body::before {
                controls="false"
                disableRemotePlayback
                data-immersive-video="false">
-          <source src="image/yuwenkai.mp4" type="video/mp4">
+          <source src="yuwenkai.mp4" type="video/mp4">
         </video>
         <div class="absolute bottom-0 w-full bg-darkCard p-5 text-center transition-all hover:bg-ancient">
           <h3 class="text-2xl font-yuwen font-bold text-ancient hover:text-white">宇文恺</h3>
@@ -1327,7 +1327,7 @@ body::before {
                controls="false"
                disableRemotePlayback
                data-immersive-video="false">
-          <source src="image/lichun.mp4" type="video/mp4">
+          <source src="lichun.mp4" type="video/mp4">
         </video>
         <div class="absolute bottom-0 w-full bg-darkCard p-5 text-center transition-all hover:bg-ancient">
           <h3 class="text-2xl font-lichun font-bold text-ancient hover:text-white">李春</h3>
@@ -1350,7 +1350,7 @@ body::before {
                controls="false"
                disableRemotePlayback
                data-immersive-video="false">
-          <source src="image/lijie.mp4" type="video/mp4">
+          <source src="lijie.mp4" type="video/mp4">
         </video>
         <div class="absolute bottom-0 w-full bg-darkCard p-5 text-center transition-all hover:bg-ancient">
           <h3 class="text-2xl font-lijie font-bold text-ancient hover:text-white">李诫</h3>
@@ -1371,9 +1371,9 @@ body::before {
     <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full md:w-[48%] h-[480px] rounded-xl overflow-hidden card-shadow z-10">
       <div class="relative w-full h-full blinds-animation">
         <!-- 底层图 -->
-        <img src="image/mingrenmingyan(3).jpg" class="absolute w-full h-full object-cover">
+        <img src="mingrenmingyan(3).jpg" class="absolute w-full h-full object-cover">
         <!-- 上层百叶窗遮罩图 -->
-        <img src="image/mingrenmingyan(4).jpg" class="absolute w-full h-full object-cover blinds-top">
+        <img src="mingrenmingyan(4).jpg" class="absolute w-full h-full object-cover blinds-top">
       </div>
     </div>
 
@@ -1520,19 +1520,19 @@ body::before {
 /* 引入本地字体 */
 @font-face {
   font-family: "精工良器标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "精工良器副标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "精工良器背景字体";
-  src: url("./fonts/余思源颜黄体.ttf") format("truetype");
+  src: url("余思源颜黄体.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -1568,7 +1568,7 @@ body::before {
       <div class="p-8 hover-scale rounded-md bg-darkBg card-shadow animate-slide-left animate-delay-1 transition-all duration-300 border-2 border-transparent hover:border-ancient/50 cursor-pointer"
            onclick="openToolModal('shifu')">
         <!-- 石斧 本地图标 -->
-        <img src="icons/铁锤_hammer-and-anvil.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
+        <img src="铁锤_hammer-and-anvil.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
         <h3 class="text-xl font-kai font-bold mb-4 text-ancientLight">石斧</h3>
         <p class="text-sm opacity-70 line-clamp-2 leading-relaxed">新石器时代，原始社会最早的建筑工具之一，用于砍削木材、挖掘土方。</p>
         <p class="text-right text-ancient mt-6 text-sm">详情了解</p>
@@ -1577,7 +1577,7 @@ body::before {
       <div class="p-8 hover-scale rounded-md bg-darkBg card-shadow animate-slide-left animate-delay-2 transition-all duration-300 border-2 border-transparent hover:border-ancient/50 cursor-pointer"
            onclick="openToolModal('qingshi')">
         <!-- 青铜石斧 本地图标 -->
-        <img src="icons/扳手_spanner.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
+        <img src="扳手_spanner.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
         <h3 class="text-xl font-kai font-bold mb-4 text-ancientLight">青铜石斧</h3>
         <p class="text-sm opacity-70 line-clamp-2 leading-relaxed">商周时期，青铜斧斤取代石斧，成为更高效的木材砍削工具。</p>
         <p class="text-right text-ancient mt-6 text-sm">详情了解</p>
@@ -1586,7 +1586,7 @@ body::before {
       <div class="p-8 hover-scale rounded-md bg-darkBg card-shadow animate-slide-left animate-delay-3 transition-all duration-300 border-2 border-transparent hover:border-ancient/50 cursor-pointer"
            onclick="openToolModal('zaozi')">
         <!-- 凿子 本地图标 -->
-        <img src="icons/卷尺_tape-measure.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
+        <img src="卷尺_tape-measure.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
         <h3 class="text-xl font-kai font-bold mb-4 text-ancientLight">凿子</h3>
         <p class="text-sm opacity-70 line-clamp-2 leading-relaxed">商周至战国时期，用于雕刻木材、制作榫卯结构。</p>
         <p class="text-right text-ancient mt-6 text-sm">详情了解</p>
@@ -1595,7 +1595,7 @@ body::before {
       <div class="p-8 hover-scale rounded-md bg-darkBg card-shadow animate-slide-left animate-delay-1 transition-all duration-300 border-2 border-transparent hover:border-ancient/50 cursor-pointer"
            onclick="openToolModal('juzi')">
         <!-- 锯子 本地图标 -->
-        <img src="icons/发簪_afro-pick.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
+        <img src="发簪_afro-pick.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
         <h3 class="text-xl font-kai font-bold mb-4 text-ancientLight">锯子</h3>
         <p class="text-sm opacity-70 line-clamp-2 leading-relaxed">商周时期，用于木材的横向切断及纵向分解，木作核心工具。</p>
         <p class="text-right text-ancient mt-6 text-sm">详情了解</p>
@@ -1604,7 +1604,7 @@ body::before {
       <div class="p-8 hover-scale rounded-md bg-darkBg card-shadow animate-slide-left animate-delay-2 transition-all duration-300 border-2 border-transparent hover:border-ancient/50 cursor-pointer"
            onclick="openToolModal('jinzhui')">
         <!-- 金锥 本地图标 -->
-        <img src="icons/螺丝刀_screwdriver.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
+        <img src="螺丝刀_screwdriver.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
         <h3 class="text-xl font-kai font-bold mb-4 text-ancientLight">金锥</h3>
         <p class="text-sm opacity-70 line-clamp-2 leading-relaxed">战国时期，铁制夯土工具，用于夯筑地基、道路和城墙。</p>
         <p class="text-right text-ancient mt-6 text-sm">详情了解</p>
@@ -1613,7 +1613,7 @@ body::before {
       <div class="p-8 hover-scale rounded-md bg-darkBg card-shadow animate-slide-left animate-delay-3 transition-all duration-300 border-2 border-transparent hover:border-ancient/50 cursor-pointer"
            onclick="openToolModal('modou')">
         <!-- 墨斗 本地图标 -->
-        <img src="icons/测量_scale-one.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
+        <img src="测量_scale-one.svg" class="w-6 h-6 text-ancient mb-6 object-contain">
         <h3 class="text-xl font-kai font-bold mb-4 text-ancientLight">墨斗</h3>
         <p class="text-sm opacity-70 line-clamp-2 leading-relaxed">宋代及以后，传统木工划线定位工具，确保构件加工精确。</p>
         <p class="text-right text-ancient mt-6 text-sm">详情了解</p>
@@ -1628,19 +1628,19 @@ body::before {
 /* 引入本地字体 */
 @font-face {
   font-family: "典籍标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "典籍副标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "典籍背景字体";
-  src: url("./fonts/余思源颜黄体.ttf") format("truetype");
+  src: url("余思源颜黄体.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -2016,7 +2016,7 @@ body::before {
     <div class="quiz-wrapper">
       <!-- 左侧 GIF 动图 -->
       <div class="quiz-img-box">
-        <img src="image/zhishiwenda.gif" alt="古建筑问答">
+        <img src="zhishiwenda.gif" alt="古建筑问答">
       </div>
 
       <!-- 右侧问答 -->
@@ -2102,19 +2102,19 @@ body::before {
 /* 引入本地字体 */
 @font-face {
   font-family: "古今标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "古今副标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "古今背景字体";
-  src: url("./fonts/余思源颜黄体.ttf") format("truetype");
+  src: url("余思源颜黄体.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -2148,8 +2148,8 @@ body::before {
       <!-- 新闻1 -->
       <div class="group cursor-pointer transition-all duration-300 hover:scale-[1.03]" onclick="openNewsModal(1)">
         <div class="relative w-full pt-[85%] overflow-hidden rounded-xl card-shadow mb-5">
-          <img src="image/xinwen_1.png" class="absolute inset-0 w-full h-full object-cover">
-          <img src="image/xinwen_1(1).png" class="absolute inset-0 w-full h-full object-cover animate-fade">
+          <img src="xinwen_1.png" class="absolute inset-0 w-full h-full object-cover">
+          <img src="xinwen_1(1).png" class="absolute inset-0 w-full h-full object-cover animate-fade">
         </div>
         <div>
           <p class="text-sm text-ancientLight/70 font-kai mb-1">2008年8月</p>
@@ -2164,8 +2164,8 @@ body::before {
       <!-- 新闻2 -->
       <div class="group cursor-pointer transition-all duration-300 hover:scale-[1.03]" onclick="openNewsModal(2)">
         <div class="relative w-full pt-[85%] overflow-hidden rounded-xl card-shadow mb-5">
-          <img src="image/xinwen_2.png" class="absolute inset-0 w-full h-full object-cover">
-          <img src="image/xinwen_2(1).png" class="absolute inset-0 w-full h-full object-cover animate-fade">
+          <img src="xinwen_2.png" class="absolute inset-0 w-full h-full object-cover">
+          <img src="xinwen_2(1).png" class="absolute inset-0 w-full h-full object-cover animate-fade">
         </div>
         <div>
           <p class="text-sm text-ancientLight/70 font-kai mb-1">2024年9月</p>
@@ -2180,8 +2180,8 @@ body::before {
       <!-- 新闻3 -->
       <div class="group cursor-pointer transition-all duration-300 hover:scale-[1.03]" onclick="openNewsModal(3)">
         <div class="relative w-full pt-[85%] overflow-hidden rounded-xl card-shadow mb-5">
-          <img src="image/xinwen_3.png" class="absolute inset-0 w-full h-full object-cover">
-          <img src="image/xinwen_3_1.png" class="absolute inset-0 w-full h-full object-cover animate-fade">
+          <img src="xinwen_3.png" class="absolute inset-0 w-full h-full object-cover">
+          <img src="xinwen_3_1.png" class="absolute inset-0 w-full h-full object-cover animate-fade">
         </div>
         <div>
           <p class="text-sm text-ancientLight/70 font-kai mb-1">2024年6月</p>
@@ -2196,8 +2196,8 @@ body::before {
       <!-- 新闻4 -->
       <div class="group cursor-pointer transition-all duration-300 hover:scale-[1.03]" onclick="openNewsModal(4)">
         <div class="relative w-full pt-[85%] overflow-hidden rounded-xl card-shadow mb-5">
-          <img src="image/xinwen_4.png" class="absolute inset-0 w-full h-full object-cover">
-          <img src="image/xinwen_4(1).png" class="absolute inset-0 w-full h-full object-cover animate-fade">
+          <img src="xinwen_4.png" class="absolute inset-0 w-full h-full object-cover">
+          <img src="xinwen_4(1).png" class="absolute inset-0 w-full h-full object-cover animate-fade">
         </div>
         <div>
           <p class="text-sm text-ancientLight/70 font-kai mb-1">2022年8月</p>
@@ -2212,8 +2212,8 @@ body::before {
       <!-- 新闻5 -->
       <div class="group cursor-pointer transition-all duration-300 hover:scale-[1.03]" onclick="openNewsModal(5)">
         <div class="relative w-full pt-[85%] overflow-hidden rounded-xl card-shadow mb-5">
-          <img src="image/xinwen_5_1.png" class="absolute inset-0 w-full h-full object-cover">
-          <img src="image/xinwen_5_2.png" class="absolute inset-0 w-full h-full object-cover animate-fade">
+          <img src="xinwen_5_1.png" class="absolute inset-0 w-full h-full object-cover">
+          <img src="xinwen_5_2.png" class="absolute inset-0 w-full h-full object-cover animate-fade">
         </div>
         <div>
           <p class="text-sm text-ancientLight/70 font-kai mb-1">2024年4月</p>
@@ -2228,8 +2228,8 @@ body::before {
       <!-- 新闻6 -->
       <div class="group cursor-pointer transition-all duration-300 hover:scale-[1.03]" onclick="openNewsModal(6)">
         <div class="relative w-full pt-[85%] overflow-hidden rounded-xl card-shadow mb-5">
-          <img src="image/xinwen_6_1.png" class="absolute inset-0 w-full h-full object-cover">
-          <img src="image/xinwen_6_2.png" class="absolute inset-0 w-full h-full object-cover animate-fade">
+          <img src="xinwen_6_1.png" class="absolute inset-0 w-full h-full object-cover">
+          <img src="xinwen_6_2.png" class="absolute inset-0 w-full h-full object-cover animate-fade">
         </div>
         <div>
           <p class="text-sm text-ancientLight/70 font-kai mb-1">2024年7月</p>
@@ -2272,19 +2272,19 @@ function showDataScreen() {
 /* 引入本地字体 */
 @font-face {
   font-family: "项目标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "项目副标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "项目背景字体";
-  src: url("./fonts/余思源颜黄体.ttf") format("truetype");
+  src: url("余思源颜黄体.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -2316,11 +2316,11 @@ function showDataScreen() {
       <!-- 左侧：两张图片上下摆放 4:3比例 -->
       <div class="space-y-6 animate-slide-left animate-delay-1">
         <div class="relative aspect-[9/16] overflow-hidden rounded-xl card-shadow hover-scale">
-          <img src="image/xiangmujieshao.jpg" 
+          <img src="xiangmujieshao.jpg" 
                class="w-full h-full object-cover" alt="古建筑插画1">
         </div>
         <div class="relative aspect-[4/3] overflow-hidden rounded-xl card-shadow hover-scale">
-          <img src="image/xiangmujieshao(1).jpg" 
+          <img src="xiangmujieshao(1).jpg" 
                class="w-full h-full object-cover" alt="古建筑插画2">
         </div>
       </div>
@@ -2429,19 +2429,19 @@ function showDataScreen() {
 /* 引入本地字体 */
 @font-face {
   font-family: "联系标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "联系副标题字体";
-  src: url("./fonts/CooperZhengKai-1.491.ttf") format("truetype");
+  src: url("CooperZhengKai-1.491.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "联系背景字体";
-  src: url("./fonts/余思源颜黄体.ttf") format("truetype");
+  src: url("余思源颜黄体.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -2470,7 +2470,7 @@ function showDataScreen() {
   <div class="max-w-7xl mx-auto w-full">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <div class="relative overflow-hidden rounded-xl card-shadow h-[550px] animate-slide-left animate-delay-1">
-        <img src="image/lianxiwomen.jpg" 
+        <img src="lianxiwomen.jpg" 
              class="w-full h-full object-cover" alt="联系我们配图">
       </div>
       
@@ -2525,7 +2525,7 @@ function showDataScreen() {
   <div class="space-y-4">
     <div class="flex items-center gap-3 text-2xl font-kai font-bold text-ancient">
       <img 
-        src="image/logo.png" 
+        src="logo.png" 
         alt="数说宫韵" 
         class="h-10 w-auto object-contain transition-all duration-300 hover:scale-105 tracking-wider drop-shadow-md transform"
       >
@@ -2573,7 +2573,7 @@ function showDataScreen() {
 
     <!-- 最下方版权 -->
     <div class="pt-6 border-t border-ancient/10 text-left text-sm opacity-70 english-font">
-      © 2026 宫韵数说
+      © 2026 数说宫韵
     </div>
   </div>
 </footer>
@@ -2609,28 +2609,28 @@ const peopleData = {
         time: '春秋战国时期',
         sex: '男', 
         birth: '公元前507年-公元前444',
-        img: 'image/luban.jpg',
+        img: 'luban.jpg',
     },
     yuwen: { 
         name: '宇文恺', 
         time: '隋代', 
         sex: '男', 
         birth: '公元前555年-公元前612', 
-        img: 'image/yuwenkai.png',
+        img: 'yuwenkai.png',
     },
     lichun: { 
         name: '李春', 
         time: '隋代', 
         sex: '男', 
         birth: '公元前550年-公元前620', 
-        img: 'image/lichun.jpg',
+        img: 'lichun.jpg',
     },
     lijie: { 
         name: '李诫', 
         time: '北宋', 
         sex: '男', 
         birth: '公元前1035年-公元前1110', 
-        img: 'image/lijie.png',
+        img: 'lijie.png',
     }
 };
 
@@ -2783,7 +2783,7 @@ function openModal(id) {
     const personHtml = `
       <section class="person-detail relative min-h-screen bg-darkBg flex items-center justify-center px-4 py-20 animate-fade-in show" style="display: flex !important; z-index: 999;">
         <div class="bg-text font-people-bg">营政先贤 · 营政先贤 · 营政先贤 · 营政先贤</div>
-        <div class="absolute inset-0 bg-[url('image/xiangxiyemianbeijing.jpg')] opacity-5 bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-[url('xiangxiyemianbeijing.jpg')] opacity-5 bg-cover bg-center"></div>
         <div class="max-w-6xl mx-auto w-full relative z-10">
           <div class="w-full text-center py-10 relative z-10">
             <h1 class="text-5xl font-people-title font-bold text-ancient mb-4">营政先贤</h1>
@@ -2947,7 +2947,7 @@ function openToolModal(id) {
         </div>
 
         <div class="mb-12 w-full h-[380px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-          <img src="image/shifu.png" alt="石斧" class="w-full h-full object-cover">
+          <img src="shifu.png" alt="石斧" class="w-full h-full object-cover">
         </div>
 
         <div class="mb-12">
@@ -2968,10 +2968,10 @@ function openToolModal(id) {
 
         <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/shifu(1).png" alt="石斧使用场景" class="w-full h-full object-cover">
+            <img src="shifu(1).png" alt="石斧使用场景" class="w-full h-full object-cover">
           </div>
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/shifu(2).png" alt="石斧使用场景" class="w-full h-full object-cover">
+            <img src="shifu(2).png" alt="石斧使用场景" class="w-full h-full object-cover">
           </div>
         </div>
 
@@ -2998,7 +2998,7 @@ function openToolModal(id) {
         </div>
 
         <div class="mb-12 w-full h-[380px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-          <img src="image/qingtongshifu.jpg" alt="青铜石斧" class="w-full h-full object-cover">
+          <img src="qingtongshifu.jpg" alt="青铜石斧" class="w-full h-full object-cover">
         </div>
 
         <div class="mb-12">
@@ -3019,10 +3019,10 @@ function openToolModal(id) {
 
         <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/qingtongshifu(1).png" alt="青铜石斧使用场景" class="w-full h-full object-cover">
+            <img src="qingtongshifu(1).png" alt="青铜石斧使用场景" class="w-full h-full object-cover">
           </div>
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/qingtongshifu(2).png" alt="青铜使用场景" class="w-full h-full object-cover">
+            <img src="qingtongshifu(2).png" alt="青铜使用场景" class="w-full h-full object-cover">
           </div>
         </div>
 
@@ -3049,7 +3049,7 @@ function openToolModal(id) {
         </div>
 
         <div class="mb-12 w-full h-[380px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-          <img src="image/zaozi.jpg" alt="凿子" class="w-full h-full object-cover">
+          <img src="zaozi.jpg" alt="凿子" class="w-full h-full object-cover">
         </div>
 
         <div class="mb-12">
@@ -3069,10 +3069,10 @@ function openToolModal(id) {
 
         <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/zaozi(1).png" alt="凿子使用场景" class="w-full h-full object-cover">
+            <img src="zaozi(1).png" alt="凿子使用场景" class="w-full h-full object-cover">
           </div>
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/zaozi(2).png" alt="凿子使用场景" class="w-full h-full object-cover">
+            <img src="zaozi(2).png" alt="凿子使用场景" class="w-full h-full object-cover">
           </div>
         </div>
 
@@ -3097,7 +3097,7 @@ function openToolModal(id) {
         </div>
 
         <div class="mb-12 w-full h-[380px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-          <img src="image/juzi.jpg" alt="锯子" class="w-full h-full object-cover">
+          <img src="juzi.jpg" alt="锯子" class="w-full h-full object-cover">
         </div>
 
         <div class="mb-12">
@@ -3118,10 +3118,10 @@ function openToolModal(id) {
 
         <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/juzi(1).png" alt="锯子使用场景" class="w-full h-full object-cover">
+            <img src="juzi(1).png" alt="锯子使用场景" class="w-full h-full object-cover">
           </div>
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/juzi(2).png" alt="锯子使用场景" class="w-full h-full object-cover">
+            <img src="juzi(2).png" alt="锯子使用场景" class="w-full h-full object-cover">
           </div>
         </div>
 
@@ -3146,7 +3146,7 @@ function openToolModal(id) {
         </div>
 
         <div class="mb-12 w-full h-[380px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-          <img src="image/jinzhui.jpg" alt="金锥" class="w-full h-full object-cover">
+          <img src="jinzhui.jpg" alt="金锥" class="w-full h-full object-cover">
         </div>
 
         <div class="mb-12">
@@ -3166,10 +3166,10 @@ function openToolModal(id) {
 
         <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/jinzhui(1).png" alt="金锥使用场景" class="w-full h-full object-cover">
+            <img src="jinzhui(1).png" alt="金锥使用场景" class="w-full h-full object-cover">
           </div>
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/jinzhui(2).png" alt="金锥使用场景" class="w-full h-full object-cover">
+            <img src="jinzhui(2).png" alt="金锥使用场景" class="w-full h-full object-cover">
           </div>
         </div>
 
@@ -3195,7 +3195,7 @@ function openToolModal(id) {
         </div>
 
         <div class="mb-12 w-full h-[380px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-          <img src="image/modou.jpg" alt="墨斗" class="w-full h-full object-cover">
+          <img src="modou.jpg" alt="墨斗" class="w-full h-full object-cover">
         </div>
 
         <div class="mb-12">
@@ -3215,10 +3215,10 @@ function openToolModal(id) {
 
         <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/modou(1).png" alt="墨斗使用场景" class="w-full h-full object-cover">
+            <img src="modou(1).png" alt="墨斗使用场景" class="w-full h-full object-cover">
           </div>
           <div class="h-[320px] rounded-lg border border-ancient/20 bg-darkCard/40 overflow-hidden">
-            <img src="image/modou(2).png" alt="墨斗使用场景" class="w-full h-full object-cover">
+            <img src="modou(2).png" alt="墨斗使用场景" class="w-full h-full object-cover">
           </div>
         </div>
 
@@ -3232,7 +3232,7 @@ function openToolModal(id) {
     const detailHtml = `
       <section class="tool-detail relative min-h-screen bg-darkBg px-4 py-20 z-999" style="display:flex !important;">
         <div class="bg-text tools-bg-text">精工良器 · 精工良器 · 精工良器 · 精工良器</div>
-        <div class="absolute inset-0 bg-[url('image/xiangxiyemianbeijing.jpg')] opacity-5 bg-cover"></div>
+        <div class="absolute inset-0 bg-[url('xiangxiyemianbeijing.jpg')] opacity-5 bg-cover"></div>
         <div class="max-w-6xl mx-auto w-full relative z-10">
           <div class="w-full text-center py-10">
             <h1 class="text-5xl tools-title font-bold text-ancient mb-4">精工良器</h1>
@@ -3269,73 +3269,73 @@ const bookData = {
     name: "《营造法式》",
     author: "李诫",
     age: "北宋",
-    img: "image/yingzao.jpg",         
-    img2: "image/yingzao_2.jpg",       
-    img3: "image/yingzao_3.jpg"        
+    img: "yingzao.jpg",         
+    img2: "yingzao_2.jpg",       
+    img3: "yingzao_3.jpg"        
   },
   kaogong: {
     name: "《考工记》",
     author: "先秦",
     age: "春秋战国",
-    img: "image/kaogong.png",
-    img2: "image/kaogong_2.png",
-    img3: "image/kaogong_3.jpg"
+    img: "kaogong.png",
+    img2: "kaogong_2.png",
+    img3: "kaogong_3.jpg"
   },
   mujing: {
     name: "《木经》",
     author: "喻浩",
     age: "北宋",
-    img: "image/mujing_3.jpg",
-    img2: "image/mujing_2.png",
-    img3: "image/mujing.jpg"
+    img: "mujing_3.jpg",
+    img2: "mujing_2.png",
+    img3: "mujing.jpg"
   },
   gongcheng: {
     name: "《工程做法则例》",
     author: "清代工部",
     age: "清雍正年间",
-    img: "image/gongcheng.jpg",
-    img2: "image/gongcheng_2.png",
-    img3: "image/gongcheng_3.png"
+    img: "gongcheng.jpg",
+    img2: "gongcheng_2.png",
+    img3: "gongcheng_3.png"
   },
   yuanye: {
     name: "《园冶》",
     author: "计成",
     age: "明代",
-    img: "image/yuanye.png",
-    img2: "image/yuanye_2.jpg",
-    img3: "image/yuanye_3.jpg"
+    img: "yuanye.png",
+    img2: "yuanye_2.jpg",
+    img3: "yuanye_3.jpg"
   },
   changwu: {
     name: "《长物志》",
     author: "文震亨",
     age: "明代",
-    img: "image/changwu.jpg",
-    img2: "image/changwu_2.jpg",
-    img3: "image/changwu_3.png"
+    img: "changwu.jpg",
+    img2: "changwu_2.jpg",
+    img3: "changwu_3.png"
   },
   lubanbook: {
     name: "《鲁班经》",
     author: "民间辑录",
     age: "明清流传",
-    img: "image/lubanbook.jpg",
-    img2: "image/lubanbook_2.jpg",
-    img3: "image/lubanbook_3.png"
+    img: "lubanbook.jpg",
+    img2: "lubanbook_2.jpg",
+    img3: "lubanbook_3.png"
   },
   xianqing: {
     name: "《闲情偶寄》",
     author: "李渔",
     age: "清康熙十年",
-    img: "image/xianqing.png",
-    img2: "image/xianqing_2.png",
-    img3: "image/xianqing_3.png"
+    img: "xianqing.png",
+    img2: "xianqing_2.png",
+    img3: "xianqing_3.png"
   },
   gongduan: {
     name: "《工段营造录》",
     author: "李斗",
     age: "清乾隆六十年",
-    img: "image/gongduan.jpg",
-    img2: "image/gongduan_2.jpg",
-    img3: "image/gongduan_3.jpg"
+    img: "gongduan.jpg",
+    img2: "gongduan_2.jpg",
+    img3: "gongduan_3.jpg"
   }
 };
 
@@ -3529,7 +3529,7 @@ function openBookModal(id) {
     <section class="relative min-h-screen bg-darkBg flex items-center justify-center px-4 py-20 animate-fade-in show"
              style="display: flex !important; z-index: 999;">
       <div class="bg-text books-bg">典籍荟萃 · 典籍荟萃 · 典籍荟萃 · 典籍荟萃</div>
-      <div class="absolute inset-0 bg-[url('image/xiangxiyemianbeijing.jpg')] opacity-5 bg-cover bg-center"></div>
+      <div class="absolute inset-0 bg-[url('xiangxiyemianbeijing.jpg')] opacity-5 bg-cover bg-center"></div>
       <div class="max-w-6xl mx-auto w-full relative z-10">
       
         <div class="w-full text-center py-10 relative z-10">
@@ -3610,7 +3610,7 @@ window.addEventListener('popstate', () => {
 const newsData = [
   // 0号默认数据
  {
-    cover: "image/xinwen_1_1.png",
+    cover: "xinwen_1_1.png",
     source: "腾讯新闻",
     title: "故宫太和殿保护维修工程",
     intro: "简介小故宫太和殿作为明清皇宫的核心建筑，是我国现存规模最大、"+
@@ -3651,8 +3651,8 @@ const newsData = [
     "古物陈列所使用时期，1915年，三大殿外檐油饰彩画；1929年，太和殿进行保养；1946年，三大殿进行修缮。\n"+
     "新中国成立后，于1951年对三大殿区域进行保养，1958年揭墁太和殿三台地面，\n"+
     "1959年三大殿一区重新油饰彩画，1961年归安太和殿前石活，1964年太和殿油饰保养，1987年再次对三大殿屋顶进行保养。",
-    img1: "image/xinwen_1_2.png",
-    img2: "image/xinwen_1_3.png",
+    img1: "xinwen_1_2.png",
+    img2: "xinwen_1_3.png",
     subTitle3: "成果：太和殿重焕千年光彩",
     content4: "太和殿在明代曾历三次烧毁后重建，在清代有一次烧毁后重建，两次重修。\n"+
     "民国期间进行了3次维修，主要为1915年外檐重做油饰彩画。\n"+
@@ -3674,7 +3674,7 @@ const newsData = [
   },
   // 1号 故宫太和殿
   {
-    cover: "image/xinwen_1_1.png",
+    cover: "xinwen_1_1.png",
     source: "腾讯新闻",
     title: "故宫太和殿保护维修工程",
     intro: "简介小故宫太和殿作为明清皇宫的核心建筑，是我国现存规模最大、"+
@@ -3715,8 +3715,8 @@ const newsData = [
     "古物陈列所使用时期，1915年，三大殿外檐油饰彩画；1929年，太和殿进行保养；1946年，三大殿进行修缮。\n"+
     "新中国成立后，于1951年对三大殿区域进行保养，1958年揭墁太和殿三台地面，\n"+
     "1959年三大殿一区重新油饰彩画，1961年归安太和殿前石活，1964年太和殿油饰保养，1987年再次对三大殿屋顶进行保养。",
-    img1: "image/xinwen_1.png",
-    img2: "image/xinwen_1(1).png",
+    img1: "xinwen_1.png",
+    img2: "xinwen_1(1).png",
     subTitle3: "成果：太和殿重焕千年光彩",
     content4: "太和殿在明代曾历三次烧毁后重建，在清代有一次烧毁后重建，两次重修。\n"+
     "民国期间进行了3次维修，主要为1915年外檐重做油饰彩画。\n"+
@@ -3738,7 +3738,7 @@ const newsData = [
   },
   // 2号 颐和园长廊
   {
-    cover: "image/xinwen_2_1.png",
+    cover: "xinwen_2_1.png",
     source: "新京报",
     title: "颐和园长廊彩画保护修复工程",
     intro: "从颐和园东宫门入园，沿着昆明湖向西走不足千米，就到了游人如织的长廊。\n"+
@@ -3791,8 +3791,8 @@ const newsData = [
     "制备骨胶的材料占比也是一点点测试调制的。\n"+
     "传统技艺和现代科技可以满足彩画修复的需求，但长廊中大量的游客给彩画修复带来了新的挑战。\n"+
     "为了确保游人安全通行，修复人员会在梁下搭建一个围挡，蹲在梯子上作业，一蹲就是一天。",
-    img1: "image/xinwen_2_2.png",
-    img2: "image/xinwen_2_3.png",
+    img1: "xinwen_2_2.png",
+    img2: "xinwen_2_3.png",
     subTitle3: "文物数字化，可随时调取画面对比",
     content4: "为了确保长廊彩画遗产的真实性、完整性、延续性，公园还要定期给彩画“拍照”。\n"+
     "早在上世纪90年代，颐和园就开始了留存长廊彩画的原始影像，近些年，\n"+
@@ -3829,7 +3829,7 @@ const newsData = [
   },
   // 3号 佛山历史建筑
   {
-    cover: "image/xinwen_3_1.png",
+    cover: "xinwen_3_1.png",
     source: "央视网",
     title: "以用促护 佛山历史建筑保护新思路",
     intro: "记者近日从住房城乡建设部了解到，我国城乡历史文化保护对象数量大幅增长。\n"+
@@ -3868,8 +3868,8 @@ const newsData = [
     "开设茶馆半年来，他已经形成了这样的习惯，每天都会详细了解建筑物的健康状况。\n"+
     "目前，这座历史建筑在他的精心照料下，保持了良好的状态。\n"+
     "不止黄勇为所在的古祠堂，碧江社区里的18处省级、市级历史文物保护单位和5处历史建筑，现在都得到了“认领”。",
-    img1: "image/xinwen_3_2.png",
-    img2: "image/xinwen_3_3.jpg",
+    img1: "xinwen_3_2.png",
+    img2: "xinwen_3_3.jpg",
     subTitle3: "保护：让“现代”与“历史”并存",
     content4: "在佛山，有数量众多的老宅等古建筑，它们虽然不是政府认定的历史建筑，不在法定保护的范围内，\n"+
     "但其中不少具有较高的历史文化价值。\n"+
@@ -3897,7 +3897,7 @@ const newsData = [
   },
   // 4号 复建永定门
   {
-    cover: "image/xinwen_4_1.png",
+    cover: "xinwen_4_1.png",
     source: "北京日报",
     title: "复建永定门",
     intro: "近期，国家文物局党组已经研究确定，推荐“北京中轴线”作为我国2024年世界文化遗产申报项目。\n"+
@@ -4026,8 +4026,8 @@ const newsData = [
     "“历史兜兜转转，似乎又回到了原点。\n"+
     "但时过境迁，根据考古队的勘探结果，除了永定门城楼，\n"+
     "其箭楼和瓮城旧址已是南二环路和南护城河河道，已不具备复建条件。",
-    img1: "image/xinwen_4_2.png",
-    img2: "image/xinwen_4_3.png",
+    img1: "xinwen_4_2.png",
+    img2: "xinwen_4_3.png",
     subTitle3: "重现南中轴神韵",
     content5: "2004年3月10日，寒风凛冽，南二环外却是一片热火朝天。\n"+
     "永定门复建工程终于正式开工，王世仁和郑孝燮在奠基礼上，用手抚摸着奠基石激动不已。\n"+
@@ -4084,7 +4084,7 @@ const newsData = [
   },
   // 5号 苏州平江路
   {
-    cover: "image/xinwen_5_1.png",
+    cover: "xinwen_5_1.png",
     source: "澎湃新闻",
     title: "苏州平江路历史文化街区保护修缮工程",
     intro: "近日，余杭区党政代表团赴上海、苏州学习考察，\n"+
@@ -4117,8 +4117,8 @@ const newsData = [
     "如今作为苏州状元博物馆对外开放，里面展示了各类和科举有关的藏品。\n"+
     "很难想象，这里曾一度住着33户居民，私搭乱建、宅院空间凌乱，\n"+
     "且由于年久失修，房屋出现部分木结构开裂、油漆剥落等问题。",
-    img1: "image/xinwen_5_2.png",
-    img2: "image/xinwen_5_3.png",
+    img1: "xinwen_5_2.png",
+    img2: "xinwen_5_3.png",
     subTitle3: "以人为本 留住古城“根”与“魂”",
     content3: "修旧如故留下的不仅是小桥流水、粉墙黛瓦的江南水乡风光，\n"+
     "平江历史文化街区生活着近1.3万居民，他们保留着老苏州的风俗习惯，是古城的根。\n"+
@@ -4133,7 +4133,7 @@ const newsData = [
   },
   // 6号 北京先农坛
   {
-    cover: "image/xinwen_6_1.png",
+    cover: "xinwen_6_1.png",
     source: "北京日报",
     title: "北京先农坛庆成宫、神仓院保护修缮工程",
     intro: "申遗成功的北京中轴线再添新看点。12月21日，冬至，\n"+
@@ -4168,8 +4168,8 @@ const newsData = [
     "正殿、后殿均为重檐庑殿顶、绿色琉璃瓦，梁枋绘有金龙和玺彩画，\n"+
     "窗花采用三交六椀菱花图案，殿内装饰采用团龙图案天花，尽显明代皇家建筑气派。\n"+
     "另外，庆成宫的水、电等基本设施也全部就位，满足作为博物馆开放的安全条件。",
-    img1: "image/xinwen_6_2.png",
-    img2: "image/xinwen_6_3.png",
+    img1: "xinwen_6_2.png",
+    img2: "xinwen_6_3.png",
     subTitle3: "数字复原亲耕图卷",
     content4: "不仅恢复了皇家建筑的昔日风采，庆成宫还融入现代展示手段，一口气开了3个展览。\n"+
     "其中，庆成宫正殿举办“致中育和嘉礼庆成——先农坛庆成宫数字常设展”，\n"+
@@ -4200,7 +4200,7 @@ const newsData = [
   },
   // 7号 新增新闻1（最新推文专用）
   {
-    cover: "image/xinwen_7_1.png",
+    cover: "xinwen_7_1.png",
     source: "人民网",
     title: "延吉边务督办公署旧址",
     intro: "在延吉市河南街道的一条胡同里，一幢青砖黛瓦的二层小楼，已静静矗立百余载。\n"+
@@ -4247,8 +4247,8 @@ const newsData = [
     "工匠们尽可能多地保留原始建筑材料、运用传统工艺，\n"+
     "对需要加固补强的部分也力求做到与原结构和谐统一，\n"+
     "确保其历史风貌真实完整地延续",
-    img1: "image/xinwen_7_2.png",
-    img2: "image/xinwen_7_3.png",
+    img1: "xinwen_7_2.png",
+    img2: "xinwen_7_3.png",
     subTitle4: "文旅瑰宝 爱国主义教育的生动课堂",
     content4: "展览是历史的窗口，更是精神的传承。\n"+
     "目前该旧址以铸牢中华民族共同体意识为主线举办“吴禄贞守土保国主题展”，\n"+
@@ -4281,7 +4281,7 @@ const newsData = [
   },
   // 8号 新增新闻2（最新推文专用）
   {
-    cover: "image/xinwen_8_1.jpg",
+    cover: "xinwen_8_1.jpg",
     source: "中新网",
     title: "上海韬奋楼",
     intro: "春寒料峭，苏州河畔的风带着几分凉意，\n"+
@@ -4356,8 +4356,8 @@ const newsData = [
     "对腐朽的木构件进行加固、墩接，对破损的墙面进行修补，\n"+
     "对松动的瓦片进行更换，每一道工序都力求贴合原始工艺，\n"+
     "不改变建筑的原有格局与风貌。",
-    img1: "image/xinwen_8_2.png",
-    img2: "image/xinwen_8_3.png",
+    img1: "xinwen_8_2.png",
+    img2: "xinwen_8_3.png",
     subTitle3: "传承的坚守与热爱",
     content5: "在修缮过程中，工匠们始终坚守“修旧如旧”的原则，\n"+
     "摒弃了现代建筑材料的过度使用，\n"+
@@ -4409,7 +4409,7 @@ const newsData = [
   },
   // 9号 新增新闻3（最新推文专用）
   {
-    cover: "image/xinwen_9_1.png",
+    cover: "xinwen_9_1.png",
     source: "东城区政府网站",
     title: "钟鼓楼周边6处院落的保护性修缮工程",
     intro: " 近日，钟鼓楼周边6处院落的保护性修缮工程全面启动，\n"+
@@ -4462,8 +4462,8 @@ const newsData = [
     "推出“院落修缮研学+文创探店+非遗体验”主题路线，\n"+
     "联动国子监、南锣鼓巷等周边文化节点，\n"+
     "让商业运营成为文脉传播的载体。",
-    img1: "image/xinwen_9_2.png",
-    img2: "image/xinwen_9_3.png",
+    img1: "xinwen_9_2.png",
+    img2: "xinwen_9_3.png",
     subTitle3: "修缮的是建筑，温暖的是人心，传承的是文化。",
     content5: "钟鼓楼周边院落保护性修缮工程，以“一院一策”保护了老城肌理，\n"+
     "暮鼓晨钟的历史记忆与现代生活的活力在此交融。\n"+
@@ -4645,12 +4645,12 @@ function openNewsModal(newsId) {
           <div class="flex items-center gap-6 text-sm text-ancientLight/80">
             <div class="flex items-center gap-2">
               <!-- 出处 / 作者 本地图标 -->
-              <img src="icons/人员_people.svg" class="w-4 h-4 text-ancient object-contain">
+              <img src="人员_people.svg" class="w-4 h-4 text-ancient object-contain">
               <span>出自：${d.source}</span>
             </div>
             <div class="flex items-center gap-2">
               <!-- 日期 本地图标 -->
-              <img src="icons/日历_calendar-three.svg" class="w-4 h-4 text-ancient object-contain">
+              <img src="日历_calendar-three.svg" class="w-4 h-4 text-ancient object-contain">
               <span>${d.date}</span>
             </div>
           </div>
@@ -4727,7 +4727,7 @@ function openNewsModal(newsId) {
       <button onclick="searchNews()" 
               class="px-4 bg-ancient text-darkBg font-bold rounded-lg hover-scale flex items-center justify-center">
         <!-- 本地搜索图标 -->
-        <img src="icons/搜索_search.svg" class="w-4 h-4 object-contain">
+        <img src="搜索_search.svg" class="w-4 h-4 object-contain">
       </button>
     </div>
   </div>
