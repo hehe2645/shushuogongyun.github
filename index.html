@@ -371,7 +371,7 @@
 
 /* 2. 春季主题（淡粉古典·低饱和） */
 .theme-spring {
-  --main-bg: url('spring.gif'); /* 本地GIF路径 */
+  --main-bg: url('spring.gif');
   --nav-bg: #f8f3f3;
   --card-bg: #fcf6f6;
   --card-dark: #f9eaea;
@@ -518,7 +518,7 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* 主题深色变量 + 高透明度（极深效果） */
+  /* 主题深色变量 + 高透明度 */
   background: color-mix(in srgb, var(--card-dark) 85%, transparent) !important;
   z-index: -1;
   pointer-events: none;
@@ -533,6 +533,60 @@ body::before {
   to { opacity: 1; transform: translateY(0); }
 }
   }
+
+
+/* 联系我们板块反馈弹窗  */
+.custom-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  animation: modalFadeIn 0.3s ease forwards;
+}
+.custom-modal.hide {
+  animation: modalFadeOut 0.4s ease forwards;
+}
+.modal-inner {
+  padding: 16px 32px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  min-width: 240px;
+  text-align: center;
+}
+/* 成功：古风金色 */
+.modal-inner.success {
+  background: #bfa980;
+  color: #1a1917;
+}
+/* 警告：深色底+金色文字 */
+.modal-inner.warning {
+  background: #252422;
+  color: #dfceb6;
+  border: 1px solid #bfa980;
+}
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+}
   </style>
 
 <!-- 标题本地自定义字体 -->
@@ -4198,7 +4252,7 @@ const newsData = [
     likes: "128",
     tags: ["先农坛", "庆成宫", "神仓院", "古建保护"],
   },
-  // 7号 新增新闻1（最新推文专用）
+  // 7号 新增新闻1（最新推文）
   {
     cover: "xinwen_7_1.png",
     source: "人民网",
@@ -4279,7 +4333,7 @@ const newsData = [
     likes: "20",
     tags: ["边务督办署楼","历史见证","保护修缮"],
   },
-  // 8号 新增新闻2（最新推文专用）
+  // 8号 新增新闻2（最新推文）
   {
     cover: "xinwen_8_1.jpg",
     source: "中新网",
@@ -4407,7 +4461,7 @@ const newsData = [
     likes: "98",
     tags: ["韬奋楼","中西融合风格","修旧如旧"],
   },
-  // 9号 新增新闻3（最新推文专用）
+  // 9号 新增新闻3（最新推文）
   {
     cover: "xinwen_9_1.png",
     source: "东城区政府网站",
@@ -4477,11 +4531,11 @@ const newsData = [
   },
 ];
 
-// 工具函数 
+// 工具函数
 // 根据标签找到匹配的新闻ID
-function getNewsIdByTag(tag){
-  for(let i=0;i<newsData.length;i++){
-    if(newsData[i].tags.includes(tag)) return i;
+function getNewsIdByTag(tag) {
+  for (let i = 0; i < newsData.length; i++) {
+    if (newsData[i].tags.includes(tag)) return i;
   }
   return 0;
 }
@@ -4494,14 +4548,12 @@ function getOtherNewsTags(currentId) {
       allTags = allTags.concat(item.tags);
     }
   });
-  // 去重+随机排序
   return [...new Set(allTags)].sort(() => Math.random() - 0.5);
 }
 
-// 自动解析新闻的所有副标题和正文（独立适配每篇新闻）
+// 自动解析新闻的所有副标题和正文
 function renderDynamicContent(d) {
   let html = '';
-  // 渲染所有副标题+对应内容
   for (let i = 1; i <= 10; i++) {
     const subTitle = d[`subTitle${i}`];
     const content = d[`content${i}`];
@@ -4512,23 +4564,166 @@ function renderDynamicContent(d) {
         ${content ? `<p class="text-ancientLight/90 text-sm leading-relaxed">${content}</p>` : ''}
       </div>`;
     } else if (content) {
-      // 只有内容无副标题，直接渲染
       html += `<p class="text-ancientLight/90 text-sm leading-relaxed mb-4">${content}</p>`;
     }
   }
   return html;
 }
 
-// 搜索跳转
+
+// 搜索：搜索热门榜关键词，跳对应新闻
 function searchNews() {
   const val = document.getElementById('searchInput').value.trim();
-  if(!val) { alert('请输入搜索内容'); return; }
-  alert('已搜索：' + val);
-  document.getElementById('searchInput').value = '';
-  goToWithRefresh('#today');
+  if (!val) { alert('请输入搜索内容'); return; }
+
+  const targetId = getNewsIdByTag(val);
+  if (targetId !== undefined && targetId >= 0) {
+    document.getElementById('searchInput').value = '';
+    openNewsModal(targetId);
+  } else {
+    alert('未找到相关新闻');
+  }
 }
 
-// 新闻详情页 
+// 评论系统（发表/回复/点赞/删除/保存）
+const COMMENT_STORAGE_KEY = 'gujian_comments';
+
+// 初始化评论
+function initComments(newsId) {
+  let all = JSON.parse(localStorage.getItem(COMMENT_STORAGE_KEY)) || {};
+  if (!all[newsId]) all[newsId] = [];
+  return all;
+}
+
+// 保存评论
+function saveComment(newsId, comment) {
+  let all = initComments(newsId);
+  all[newsId].unshift(comment);
+  localStorage.setItem(COMMENT_STORAGE_KEY, JSON.stringify(all));
+  renderCommentList(newsId);
+}
+
+// 删除评论
+function deleteComment(newsId, cid) {
+  let all = initComments(newsId);
+  all[newsId] = all[newsId].filter(c => c.id !== cid);
+  localStorage.setItem(COMMENT_STORAGE_KEY, JSON.stringify(all));
+  renderCommentList(newsId);
+}
+
+// 点赞评论
+function likeComment(newsId, cid) {
+  let all = initComments(newsId);
+  let c = all[newsId].find(x => x.id === cid);
+  if (c) c.like = (c.like || 0) + 1;
+  localStorage.setItem(COMMENT_STORAGE_KEY, JSON.stringify(all));
+  renderCommentList(newsId);
+}
+
+// 发表评论
+function submitComment() {
+  const newsId = history.state?.id || 0;
+  const name = document.querySelector('.comment-name')?.value.trim();
+  const content = document.querySelector('.comment-content')?.value.trim();
+
+  if (!name) { alert('请填写昵称'); return; }
+  if (!content) { alert('请填写评论内容'); return; }
+
+  // 防刷屏
+  let last = localStorage.getItem('last_comment_time');
+  if (last && Date.now() - last < 3000) {
+    alert('发表过快，请稍后再试');
+    return;
+  }
+
+  const comment = {
+    id: Date.now(),
+    name,
+    content,
+    time: new Date().toLocaleString(),
+    like: 0,
+    admin: name.includes('管理员'),
+    reply: []
+  };
+
+  saveComment(newsId, comment);
+  document.querySelector('.comment-name').value = '';
+  document.querySelector('.comment-content').value = '';
+  localStorage.setItem('last_comment_time', Date.now());
+}
+
+// 回复评论
+function submitReply(cid) {
+  const newsId = history.state?.id || 0;
+  const text = document.querySelector(`.reply-input-${cid}`)?.value.trim();
+  if (!text) return;
+
+  let all = initComments(newsId);
+  let c = all[newsId].find(x => x.id === cid);
+  if (!c) return;
+
+  c.reply.unshift({
+    id: Date.now(),
+    name: '游客',
+    content: text,
+    time: new Date().toLocaleString()
+  });
+
+  localStorage.setItem(COMMENT_STORAGE_KEY, JSON.stringify(all));
+  renderCommentList(newsId);
+}
+
+// 渲染评论列表
+function renderCommentList(newsId) {
+  let all = initComments(newsId);
+  let list = all[newsId] || [];
+
+  let html = '';
+  list.forEach(c => {
+    const adminTag = c.admin ? `<span class="text-xs bg-ancient text-darkBg px-1 rounded ml-1">管理员</span>` : '';
+    html += `
+    <div class="p-4 bg-darkCard rounded-lg flex gap-3 mb-3">
+      <img src="https://picsum.photos/seed/${c.id}/100/100" class="w-10 h-10 rounded-full object-cover">
+      <div class="flex-1">
+        <div class="flex justify-between text-sm">
+          <p class="font-bold text-ancientLight">${c.name} ${adminTag}</p>
+          <p class="opacity-60">${c.time}</p>
+        </div>
+        <p class="text-sm mt-1 opacity-90">${c.content}</p>
+        <div class="flex gap-3 mt-2 text-xs text-ancient">
+          <span onclick="likeComment(${newsId},${c.id})" class="cursor-pointer">点赞 (${c.like || 0})</span>
+          <span class="replyBtn cursor-pointer" onclick="toggleReply(${c.id})">回复</span>
+          <span onclick="deleteComment(${newsId},${c.id})" class="cursor-pointer">删除</span>
+        </div>
+        <div id="replyBox${c.id}" class="hidden mt-2">
+          <textarea class="reply-input-${c.id} w-full p-2 bg-darkBg rounded text-sm text-ancientLight mb-1" rows="1" placeholder="回复…"></textarea>
+          <button onclick="submitReply(${c.id})" class="px-2 py-1 bg-ancient text-darkBg text-xs rounded">发送</button>
+        </div>
+        <div class="mt-2 pl-4 border-l border-ancient/20 space-y-2">
+          ${c.reply.map(r => `
+          <div class="text-xs p-2 bg-darkBg/50 rounded">
+            <div class="flex justify-between">
+              <span class="text-ancientLight font-bold">${r.name}</span>
+              <span class="opacity-50">${r.time}</span>
+            </div>
+            <p class="opacity-90 mt-1">${r.content}</p>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+  });
+
+  const wrap = document.querySelector('.comment-scroll');
+  if (wrap) wrap.innerHTML = html;
+}
+
+// 展开/收起回复框
+function toggleReply(cid) {
+  const box = document.getElementById(`replyBox${cid}`);
+  box.classList.toggle('hidden');
+}
+
+// 新闻详情页
 function openNewsModal(newsId) {
   document.getElementById("footer").style.display = "none";
   playRingAnimation();
@@ -4537,25 +4732,21 @@ function openNewsModal(newsId) {
     document.querySelectorAll('section').forEach(s => s.style.display = 'none');
     const d = newsData[newsId];
 
-    // 标签
     let tagHtml = '';
     d.tags.forEach(tag => {
       tagHtml += `
-      <span class="px-3 py-1 bg-darkCard rounded-lg text-ancientLight hover:text-ancient cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-ancient/20">
+      <span class="px-3 py-1 bg-darkCard rounded-lg text-ancientLight hover:text-ancient cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-ancient/20" onclick="openNewsModal(${getNewsIdByTag(tag)})">
         ${tag}
       </span>`;
     });
 
-    // 热搜6条 
     let hotHtml = '';
-    const hotList = [1,2,3,4,5,6];
+    const hotList = [1, 2, 3, 4, 5, 6];
     hotHtml += `<div class="hot-slider">`;
     [...hotList, ...hotList].forEach((idx) => {
       const item = newsData[idx];
-      // 判断是否为当前新闻，添加高亮
       const isActive = idx === newsId;
       const activeClass = isActive ? 'bg-ancient/20 border-l-4 border-ancient' : '';
-      
       hotHtml += `
         <div class="hot-item p-4 border-b border-ancient/10 hover:bg-darkCard/50 hover:scale-[1.02] hover:text-ancient cursor-pointer transition-all duration-500 ${activeClass}"
              onclick="openNewsModal(${idx})">
@@ -4564,9 +4755,8 @@ function openNewsModal(newsId) {
     });
     hotHtml += `</div>`;
 
-    // 最新推文3条新闻（7、8、9号）
     let recentHtml = '';
-    const recentIds = [7,8,9];
+    const recentIds = [7, 8, 9];
     recentIds.forEach((idx) => {
       const item = newsData[idx];
       recentHtml += `
@@ -4582,7 +4772,6 @@ function openNewsModal(newsId) {
       </div>`;
     });
 
-    // 热门榜
     const otherTags = getOtherNewsTags(newsId);
     const showTags = otherTags.slice(0, Math.floor(Math.random() * 2) + 5);
     let keywordHtml = '';
@@ -4595,35 +4784,10 @@ function openNewsModal(newsId) {
       </span>`;
     });
 
-    // 动态渲染正文内容
     const dynamicContent = renderDynamicContent(d);
 
-    // 评论
-    let commentHtml = `
-    <div class="comment-scroll space-y-4">
-      <div class="p-4 bg-darkCard rounded-lg flex gap-3">
-        <img src="https://picsum.photos/seed/u1/100/100" class="w-10 h-10 rounded-full object-cover">
-        <div class="flex-1">
-          <div class="flex justify-between text-sm">
-            <p class="font-bold text-ancientLight">古建筑爱好者</p>
-            <p class="opacity-60">2026-03-26</p>
-          </div>
-          <p class="text-sm mt-1 opacity-90">非常震撼，中轴线复建真正做到了尊重历史、传承文脉！</p>
-          <p class="text-ancient text-sm mt-2 cursor-pointer replyBtn">回复</p>
-        </div>
-      </div>
-      <div class="p-4 bg-darkCard rounded-lg flex gap-3">
-        <img src="https://picsum.photos/seed/u2/100/100" class="w-10 h-10 rounded-full object-cover">
-        <div class="flex-1">
-          <div class="flex justify-between text-sm">
-            <p class="font-bold text-ancientLight">文保工作者</p>
-            <p class="opacity-60">2026-03-25</p>
-          </div>
-          <p class="text-sm mt-1 opacity-90">期待更多古建能用这种严谨方式复原，留住中华文明根脉。</p>
-          <p class="text-ancient text-sm mt-2 cursor-pointer replyBtn">回复</p>
-        </div>
-      </div>
-    </div>`;
+    // 评论容器
+    let commentHtml = `<div class="comment-scroll space-y-4"></div>`;
 
     const html = `
 <section class="relative min-h-screen bg-darkBg animate-fade-in show" style="display:flex !important;flex-direction:column;padding-bottom:120px;">
@@ -4635,36 +4799,28 @@ function openNewsModal(newsId) {
 
 <div class="max-w-7xl mx-auto px-4 pb-24 relative z-10 flex-1">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-      <!-- 左侧内容区（占比多） -->
       <div class="lg:col-span-8 space-y-12">
-        <!-- 顶部大图 + 出处/日期 -->
         <div class="space-y-6">
           <div class="rounded-xl overflow-hidden card-shadow relative">
             <img src="${d.cover}" class="w-full aspect-[16/9] object-cover" alt="">
           </div>
           <div class="flex items-center gap-6 text-sm text-ancientLight/80">
             <div class="flex items-center gap-2">
-              <!-- 出处 / 作者 本地图标 -->
               <img src="人员_people.svg" class="w-4 h-4 text-ancient object-contain">
               <span>出自：${d.source}</span>
             </div>
             <div class="flex items-center gap-2">
-              <!-- 日期 本地图标 -->
               <img src="日历_calendar-three.svg" class="w-4 h-4 text-ancient object-contain">
               <span>${d.date}</span>
             </div>
           </div>
         </div>
 
-        <!-- 标题 + 简介 + 动态正文 -->
         <div class="space-y-8">
           <h2 class="text-3xl font-kai font-bold text-white leading-tight">${d.title}</h2>
           <p class="text-ancientLight/90 text-sm leading-relaxed">${d.intro}</p>
-
-          <!-- 自动适配的副标题+正文 -->
           ${dynamicContent}
 
-          <!-- 两张图片 -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="rounded-lg overflow-hidden card-shadow">
               <img src="${d.img1}" class="w-full aspect-[4/3] object-cover" alt="文中图片1">
@@ -4674,14 +4830,12 @@ function openNewsModal(newsId) {
             </div>
           </div>
 
-          <!-- 关键词 -->
           <div class="flex flex-wrap gap-2 pt-6">
             <span class="text-base font-medium text-ancientLight/70">关键词：</span>
             ${tagHtml}
           </div>
         </div>
 
-        <!-- 热门评论区 -->
         <div class="bg-darkCard p-8 rounded-xl card-shadow mt-10">
           <div class="flex items-center gap-2 mb-6">
             <h3 class="text-xl font-bold text-ancientLight">02 热门评论</h3>
@@ -4691,7 +4845,6 @@ function openNewsModal(newsId) {
             ${commentHtml}
           </div>
 
-          <!-- 发表留言 -->
           <div class="mt-10 border-t border-ancient/10 pt-8">
             <p class="text-xl font-bold text-ancientLight mb-5">请您留下自己宝贵的见解吧！</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -4700,7 +4853,7 @@ function openNewsModal(newsId) {
                 <input type="text" placeholder="您的姓名" class="comment-name w-full p-3 bg-darkBg rounded border border-ancient/20 outline-none text-ancientLight">
               </div>
               <div>
-                <p class="text-sm text-ancientLight/70 mb-1">您的邮箱 *</p>
+                <p class="text-sm text-ancientLight/70 mb-1">您的邮箱（选填）</p>
                 <input type="email" placeholder="您的邮箱" class="comment-mail w-full p-3 bg-darkBg rounded border border-ancient/20 outline-none text-ancientLight">
               </div>
             </div>
@@ -4716,23 +4869,19 @@ function openNewsModal(newsId) {
         </div>
       </div>
 
-<!-- 右侧栏 -->
-<div class="lg:col-span-4 space-y-10">
-  <!-- 搜索 -->
-  <div class="bg-darkCard p-8 rounded-xl card-shadow">
-    <p class="text-lg font-bold text-ancientLight mb-4 border-b border-ancient pb-3">搜索</p>
-    <div class="flex gap-2">
-      <input id="searchInput" type="text" placeholder="请输入搜索内容..."
-            class="flex-1 p-3 bg-darkBg rounded-lg border border-ancient/20 outline-none focus:border-ancient text-ancientLight">
-      <button onclick="searchNews()" 
-              class="px-4 bg-ancient text-darkBg font-bold rounded-lg hover-scale flex items-center justify-center">
-        <!-- 本地搜索图标 -->
-        <img src="搜索_search.svg" class="w-4 h-4 object-contain">
-      </button>
-    </div>
-  </div>
+      <div class="lg:col-span-4 space-y-10">
+        <div class="bg-darkCard p-8 rounded-xl card-shadow">
+          <p class="text-lg font-bold text-ancientLight mb-4 border-b border-ancient pb-3">搜索</p>
+          <div class="flex gap-2">
+            <input id="searchInput" type="text" placeholder="搜索热门关键词…"
+                  class="flex-1 p-3 bg-darkBg rounded-lg border border-ancient/20 outline-none focus:border-ancient text-ancientLight">
+            <button onclick="searchNews()" 
+                    class="px-4 bg-ancient text-darkBg font-bold rounded-lg hover-scale flex items-center justify-center">
+              <img src="搜索_search.svg" class="w-4 h-4 object-contain">
+            </button>
+          </div>
+        </div>
 
-        <!-- 热搜网页 -->
         <div class="bg-darkCard p-8 rounded-xl card-shadow">
           <p class="text-lg font-bold text-ancientLight mb-4 border-b border-ancient pb-3">热搜网页</p>
           <div class="hot-wrapper max-h-[360px] overflow-hidden pr-2">
@@ -4740,7 +4889,6 @@ function openNewsModal(newsId) {
           </div>
         </div>
 
-        <!-- 最新推文 -->
         <div class="bg-darkCard p-8 rounded-xl card-shadow">
           <p class="text-lg font-bold text-ancientLight mb-4 border-b border-ancient pb-3">最新推文</p>
           <div class="space-y-4">
@@ -4748,7 +4896,6 @@ function openNewsModal(newsId) {
           </div>
         </div>
 
-        <!-- 热门榜（其他新闻关键词） -->
         <div class="bg-darkCard p-8 rounded-xl card-shadow">
           <p class="text-lg font-bold text-ancientLight mb-4 border-b border-ancient pb-3">热门榜</p>
           <div class="flex flex-wrap gap-2">
@@ -4759,33 +4906,17 @@ function openNewsModal(newsId) {
     </div>
   </div>
 
-  <!-- 返回按钮 -->
-<button onclick="goToWithRefresh('#today')" class="fixed top-28 left-8 z-50 px-5 py-2 bg-ancient text-darkBg font-bold rounded-lg hover-scale shadow-md">
-  <i class="fa fa-arrow-left mr-2"></i>返回新闻列表
-</button>
+  <button onclick="goToWithRefresh('#today')" class="fixed top-28 left-8 z-50 px-5 py-2 bg-ancient text-darkBg font-bold rounded-lg hover-scale shadow-md">
+    <i class="fa fa-arrow-left mr-2"></i>返回新闻列表
+  </button>
 </section>
 
 <style>
-  /* 滚动条美化 */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #bfa980;
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: rgba(191,169,128,0.1);
-  }
-
-  /* 热搜滚动动画 */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-thumb { background: #bfa980; border-radius: 10px; }
+  ::-webkit-scrollbar-track { background: rgba(191,169,128,0.1); }
   .hot-wrapper { position: relative; }
-  .hot-slider {
-    display: flex;
-    flex-direction: column;
-    animation: hotStepSlide 36s infinite ease-in-out;
-  }
+  .hot-slider { display: flex; flex-direction: column; animation: hotStepSlide 36s infinite ease-in-out; }
   .hot-item { flex-shrink: 0; }
   @keyframes hotStepSlide {
     0%  { transform: translateY(0); }
@@ -4798,37 +4929,20 @@ function openNewsModal(newsId) {
     93.1%  { transform: translateY(-66.64%); }
     100% { transform: translateY(-66.64%); }
   }
+  .hidden { display: none; }
 </style>
 `;
 
-
-
-function closeNews() {
-  // 删除你用 insertAdjacentHTML 生成的新闻详情
-  const detail = document.querySelector('.news-detail');
-  if (detail) detail.remove();
-
-  // 跳回新闻列表（古今共筑）
-  goToWithRefresh('#today');
-}
-
-
     document.body.insertAdjacentHTML('beforeend', html);
     window.scrollTo(0, 0);
-
-    document.querySelectorAll('.replyBtn').forEach(b => {
-      b.onclick = function () {
-        const wrap = document.createElement('div');
-        wrap.className = "mt-3 p-3 bg-darkCard rounded-lg";
-        wrap.innerHTML = `
-        <textarea placeholder="写下你的回复" rows="2" class="w-full p-2 bg-darkCard rounded text-sm text-ancientLight mb-2"></textarea>
-        <button onclick="this.parentElement.remove()"
-                class="px-3 py-1 bg-ancient text-darkBg text-sm rounded-lg hover-scale">提交</button>`;
-        this.after(wrap);
-      };
-    });
-
+    renderCommentList(newsId);
   }, 1000);
+}
+
+function closeNews() {
+  const detail = document.querySelector('.news-detail');
+  if (detail) detail.remove();
+  goToWithRefresh('#today');
 }
 
 
@@ -4836,33 +4950,78 @@ function closeNews() {
     document.getElementById('modal').style.display = 'none';
   }
 
-  function sendMsg() {
-    const name = document.getElementById('userName').value;
-    const email = document.getElementById('userEmail').value;
-    const msg = document.getElementById('userMsg').value;
+// 联系我们留言板
+function sendMsg() {
+  const name = document.getElementById('userName').value.trim();
+  const email = document.getElementById('userEmail').value.trim();
+  const msg = document.getElementById('userMsg').value.trim();
 
-    if (!name || !email || !msg) {
-      alert('请填写完整信息');
-      return;
-    }
-
-    const messageData = {
-      name: name,
-      email: email,
-      message: msg,
-      time: new Date().toLocaleString()
-    };
-
-    let messages = JSON.parse(localStorage.getItem('messages') || '[]');
-    messages.push(messageData);
-    localStorage.setItem('messages', JSON.stringify(messages));
-
-    alert('发送成功！');
-    document.getElementById('contactForm').reset();
+  if (!name || !email || !msg) {
+    showCustomModal('请填写完整信息！', 'warning');
+    return;
+  }
+  if (!email.includes('@')) {
+    showCustomModal('请输入有效的邮箱地址！', 'warning');
+    return;
   }
 
-  const animateElements = document.querySelectorAll('.animate-fade-in, .animate-slide-left');
-  let animated = false;
+  const messageData = {
+    name: name,
+    email: email,
+    message: msg,
+    time: new Date().toLocaleString()
+  };
+
+  let messages = JSON.parse(localStorage.getItem('messages') || '[]');
+  messages.push(messageData);
+  localStorage.setItem('messages', JSON.stringify(messages));
+
+  showCustomModal('感谢你的建议！', 'success');
+  document.getElementById('contactForm').reset();
+}
+
+// 底部邮箱订阅
+function sendFooterEmail() {
+  const email = document.getElementById('footerEmail').value.trim();
+  if (!email || !email.includes('@')) {
+    showCustomModal('请输入有效的邮箱地址！', 'warning');
+    return;
+  }
+
+  let emails = JSON.parse(localStorage.getItem('subEmails') || '[]');
+  if (emails.includes(email)) {
+    showCustomModal('该邮箱已订阅！', 'warning');
+    return;
+  }
+
+  emails.push(email);
+  localStorage.setItem('subEmails', JSON.stringify(emails));
+
+  showCustomModal('订阅成功！我们会及时推送古建新闻', 'success');
+  document.getElementById('footerEmail').value = '';
+}
+
+// 自定义弹窗
+function showCustomModal(text, type) {
+  const old = document.querySelector('.custom-modal');
+  if (old) old.remove();
+
+  const modal = document.createElement('div');
+  modal.className = 'custom-modal';
+  modal.innerHTML = `
+    <div class="modal-inner ${type}">
+      <p>${text}</p>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  setTimeout(() => modal.classList.add('hide'), 2200);
+  setTimeout(() => modal.remove(), 2800);
+}
+
+const animateElements = document.querySelectorAll('.animate-fade-in, .animate-slide-left');
+let animated = false;
+
 
   function animateOnScroll() {
     if (animated) return;
@@ -5023,17 +5182,6 @@ function closeNews() {
   });
 
   window.addEventListener('scroll', animateOnScroll);
-
-// 底部邮箱订阅提交
-function sendFooterEmail() {
-  const email = document.getElementById('footerEmail').value;
-  if (!email || !email.includes('@')) {
-    alert('请输入有效的邮箱地址');
-    return;
-  }
-  alert('订阅成功！我们会及时推送古建新闻');
-  document.getElementById('footerEmail').value = '';
-}
 
 
 
@@ -5741,6 +5889,5 @@ function playPersonIntro(card) {
   speakText(text);
 }
 </script>
-
 </body>
 </html>
